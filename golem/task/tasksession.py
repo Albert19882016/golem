@@ -479,10 +479,6 @@ class TaskSession(BasicSafeSession, ResourceHandshakeSessionMixin):
                                'handshake is in progress', self.key_id)
                 return
 
-            self.market_queue.push(msg)
-
-            msg = self.market_queue.tick()
-
             ctd = self.task_manager.get_next_subtask(
                 self.key_id, msg.node_name, msg.task_id, msg.perf_index,
                 msg.price, msg.max_resource_size, msg.max_memory_size,
